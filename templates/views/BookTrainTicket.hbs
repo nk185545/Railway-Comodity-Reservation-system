@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="ISO-8859-1">
+    {{>headerlinks}}
+ <style>
+     
+    
+    
+     body {
+  
+  
+  text-align: center;
+ background: url(images/train.webp) right bottom no-repeat;
+  background-size: 300px, 260px, auto;
+     }
+
+     button{
+    border: none ;
+    padding: 0.8rem 1.8rem;
+    font-size: 1.0rem;
+    border-radius: 2rem;
+    text-transform: uppercase;
+    box-shadow: 0 8px 6px -6px #000;
+    outline: none;
+    height: 10;
+    width: "50px";
+}
+button:hover{
+    box-shadow: 0 8px 6px -6px var(--main-color);
+}
+
+     table, td, th {  
+     border: 1px solid #ddd;
+     text-align: left;
+   }
+   
+   table {
+     border-collapse: collapse;
+     width: 50%;
+    
+   }
+   .train-data{
+       position: relative;
+     left:50px;
+     top:50px;
+    
+   }
+   th, td {
+     padding: 15px;
+     font-size: 12px;
+   }
+
+ </style>
+
+</head>
+<body  >
+    {{>userNavbar}}
+<center><h1>Book Your Cargo</h1></center>
+<br>
+<br>
+ <div class="container center" >
+        <form action="/AddCargo" method="post">
+           
+        <div class="row">
+                <div class="col-sm-6">  
+                    <h5 class="card-title">Sender's Name </h5>
+                    <input type="text" name="sendername"  required="required">
+                </div>
+
+                <div class="col-sm-6">
+                    <h5 class="card-title">Contact No. </h5>
+                    <input type="text" name="contact"  required="required">
+                </div>
+            </div>
+
+            <br>
+            <br>
+            <br>
+
+            <div class="row">
+                <div class="col-sm-6">
+                    <h5 class="card-title">Receiver Address</h5>
+                    <input type="text" name="raddress" required="required">
+                </div>
+
+                 <div class="col-sm-6">
+                    <h5 class="card-title">Cargo Weight(in kg)</h5>
+                     <input type="text" name="cw" required="required">
+                </div>
+            </div>
+            <br>
+            <br>
+            <div class="row">
+                 <div class="col-sm-6">
+                    <h5 class="card-title">Shipping Date</h5>
+                     <input type="date" name="shippingdate" >
+                </div>
+
+                <div class="col-sm-6">
+                    <h5 class="card-title">Additional Info</h5>
+                    <input type="text" name="additional" >
+                </div>
+            </div>
+                
+        
+
+
+
+            <br>
+            <br>
+            <br>
+            <!-- Submit -->
+            <button type="submit" value="Book" style="width:150px;">Book Cargo</button>
+        </form>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+{{>footer}}
+
+
+
+</body>
+</html>

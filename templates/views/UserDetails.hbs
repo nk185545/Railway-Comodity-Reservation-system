@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="ISO-8859-1">
+    {{>headerlinks}}
+ <style>
+     
+    
+    
+     body {
+  
+  
+  text-align: center;
+ background: url(images/train.webp) right bottom no-repeat;
+  background-size: 300px, 260px, auto;
+     }
+
+     button{
+    border: none ;
+    padding: 0.8rem 1.8rem;
+    font-size: 1.8rem;
+    border-radius: 2rem;
+    text-transform: uppercase;
+    box-shadow: 0 8px 6px -6px #000;
+    outline: none;
+    height: 10;
+    width: "50px";
+}
+button:hover{
+    box-shadow: 0 8px 6px -6px var(--main-color);
+}
+
+     table, td, th {  
+     border: 1px solid #ddd;
+     text-align: left;
+   }
+   
+   table {
+     border-collapse: collapse;
+     width: 50%;
+    
+   }
+   .train-data{
+       position: relative;
+     left:50px;
+     top:50px;
+    
+   }
+   th, td {
+     padding: 15px;
+     font-size: 12px;
+   }
+
+ </style>
+
+</head>
+<body  >
+    {{>adminNavbar}}
+
+ <!--====form section start====-->
+ <center>
+    <div class="train-data" >
+    <table border="1" >
+        <tr>
+            <th>Name</th>
+            <th>E-mail</th>
+            <th>User Name</th>
+            <th>Password</th>
+            <th>Date of Birth</th>
+            <th>Contact No.</th>
+        </tr>
+        
+       
+           
+       {{#each userData }}
+        <tr>
+            
+            <td>{{name}}</td>
+            <td>{{email}}</td>
+            <td>{{username}}</td>
+            <td>{{password}}</td>
+            <td>{{dob}}</td>
+            <td>{{contactNumber}}</td>
+    
+           
+        </tr>
+       {{/each}}
+        
+    </table>
+    </div>
+</center>
+
+
+
+
+
+
+
+
+
+
+
+
+{{>footer}}
+
+
+
+</body>
+</html>

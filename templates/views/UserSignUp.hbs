@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="ISO-8859-1">
+    {{>headerlinks}}
+    <style type="text/css">
+    
+        #heading3
+        {
+            background-color:white;
+            margin:20px;
+            padding:10px;
+            border-radius:10px;
+            margin:100px 50px 50px 600px;
+        }
+        input
+        {
+            margin:5px;
+            background-color:white;
+        }
+    </style>
+</head>
+<body>
+    {{>navbar}}
+<br><br><br><br>
+<div style="width:1000px;">
+  <div style="width:650px; float:left;">
+        <img class="d-block w-100" src="images/tb3.jpg" alt="Second slide">
+  </div>
+  <div style="width:350px; float:right;">
+      <center>
+        <div >
+            <font size="6" color="red"> <i><b>Registration form </b></i></font> <br><br>
+            <form action="SaveRegisterInfo" method='POST'>
+                <b><i>Name  &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</i></b><input type="text" name="name"><br>
+                <b><i>Email &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;</i></b><input type="email" name="email"><br>
+                <b><i>UserName   &nbsp; &nbsp;&nbsp;</i></b><input type="text" name="username"><br>
+                <b><i>Password&nbsp;&nbsp;&nbsp;</i></b><input type="password" name="password"><br>
+                <b><i>DOB&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;</i></b><input type="date" name="date"><br>           
+                <b><i>Contact No.</i></b><input type="text" name="contact"><br>     
+                <input type="submit" value="register">     
+                <input type="reset" value="clear">
+            </form>
+        </div>
+    </center>
+  </div>
+</div>
+
+{{>footer}}
+</body>
+</html>

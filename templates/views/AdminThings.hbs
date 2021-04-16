@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="ISO-8859-1">
+    {{>headerlinks}}
+ <style>
+     
+     .center {
+  padding: 70px 0;
+  border: 3px solid gray;
+  text-align: center;
+ background: url(images/train.webp) right bottom no-repeat;
+  background-size: 300px, 260px, auto;
+     }
+
+     button{
+    border: none ;
+    padding: 0.8rem 1.8rem;
+    font-size: 1.8rem;
+    border-radius: 2rem;
+    text-transform: uppercase;
+    box-shadow: 0 8px 6px -6px #000;
+    outline: none;
+    height: 10;
+    width: "50px";
+}
+button:hover{
+    box-shadow: 0 8px 6px -6px var(--main-color);
+}
+ </style>
+
+</head>
+<body>
+    {{>adminNavbar}}
+<br>
+<br>
+ <b><i><h1><center><font color="black">Add New Train</font></center></h1></i></b>
+ <br>
+ <br>
+<div class="container center" >
+        <form action="/addTrains" method="post">
+           
+            <div class="row">
+                <div class="col-sm-6">
+                 <h5 class="card-title">Train Number</h5>
+                    <!-- Departure -->
+                    <input type="text" name="Train_Number" id="Train_Number" required="required">
+                </div>
+                <br><br><br>
+                <div class="col-sm-6">
+                    <h5 class="card-title">Train Name</h5>
+                    <!-- Arrival -->
+                    <input type="text" name="Train_Name" id="Train_Name" required="required">
+                </div>
+            </div>
+
+            <br><br><br>
+
+            <div class="row">
+                <div class="col-sm-6">
+                    <!-- Source -->
+                    <h5 class="card-title">Source</h5>
+                    
+                        <input type="text" name="Source" id="Source" required="required">
+                
+
+                </div>
+                <div class="col-sm-6">
+                    <h5 class="card-title">Destination</h5>
+                    <!-- Destination -->
+                    <input type="text" name="Destination" id="Destination" required="required">
+                </div>
+            </div>
+
+            <br>
+            <br>
+            <br>
+
+            <div class="row">
+                <div class="col-sm-4">
+                    <h5 class="card-title">Total Available Space</h5>
+                    <!-- Total Stops -->
+                    <input type="text" name="Total_Available_Space" id="Total_Available_Space" required="required">
+                </div>
+                <div class="col-sm-4">
+                    <h5 class="card-title">Capacity Of Train</h5>
+                    <!-- Airline -->
+                     <input type="text" name="Capacity" id="Capacity" required="required">
+                </div>
+
+                 <div class="col-sm-4">
+                    <h5 class="card-title">Price(Per kg)</h5>
+                    <!-- Airline -->
+                     <input type="text" name="Price" id="Price" required="required">
+                </div>
+            </div>
+
+
+
+            <br>
+            <br>
+            <br>
+            <!-- Submit -->
+            <button type="submit" value="Add" style="width:150px;">Add</button>
+        </form>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{{>footer}}
+
+
+
+</body>
+</html>

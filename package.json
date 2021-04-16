@@ -1,0 +1,22 @@
+{
+  "name": "railwaycomoditysystem",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "neetu",
+  "license": "ISC",
+  "dependencies": {
+    "alert": "^5.0.10",
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "express-partials": "^0.3.0",
+    "expressjs": "^1.0.1",
+    "hbs": "^4.1.1",
+    "js-alert": "^1.0.4",
+    "mongoose": "^5.12.3"
+  },
+  "devDependencies": {},
+  "description": ""
+}

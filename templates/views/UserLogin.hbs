@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="ISO-8859-1">
+    {{>headerlinks}}
+    <style type="text/css">
+    
+        #heading2{
+            width:400px ;
+            height:200px ;
+            background-color:white
+            border-radius:10px;
+            margin:100px 50px 50px 600px ;
+            padding:10px ;
+        }
+        input{
+            margin:10px;
+            background-color:white;
+        }
+        
+    </style>
+</head>
+<body>
+    {{>navbar}}
+<br><br><br><br>
+<div style="width:1000px;">
+  <div style="width:650px; float:left;">
+        <img class="d-block w-100" src="images/tb3.jpg" alt="Second slide">
+  </div>
+  <div style="width:350px; float:right;">
+      <center>
+        <div >
+            <form action="UserLoginValidate" method="POST"> 
+                <font size="6px"> <i><b>Login</b></i></font> <br>
+                <font size="2px">Enter UserID :</font> <input type="text"  name="userUsername"><br>
+                <font size="2px">Enter password :</font> <input type="password"  name="userPassword"><br>
+                <font size="2px"><input type="submit" value="click me" ></font>
+            </form>
+            <font size="5px"><a href="/UserSignUp">New User ?</a></font>
+        </div>
+    </center>
+  </div>
+</div>
+
+{{>footer}}
+</body>
+</html>

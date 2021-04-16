@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    {{>headerlinks}}
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        body { margin-top:20px; }
+        .panel-title {display: inline;font-weight: bold;}
+        .checkbox.pull-right { margin: 0; }
+        .pl-ziro { padding-left: 0px; }
+
+        .second_div{
+            border-style: solid;
+            border-radius: 2rem;
+            border-width: 0.2rem;
+            border-color: black;
+        }
+       
+    
+        
+    </style>
+
+</head>
+<body>
+
+    {{>userNavbar}}
+    <br><br>
+<form action="SaveCargoDetails" method = "POST">
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">
+                            Payment Details
+                        </h3>
+                        
+                    </div>
+                    <div class="panel-body">
+                        <div class="form-group">
+                            <label for="cardNumber">
+                                CARD NUMBER</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" name="cardnum" id="cardNumber" placeholder="Valid Card Number"
+                                    required autofocus />
+                                <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-7 col-md-7">
+                                <div class="form-group">
+                                    <label for="expityMonth">
+                                        EXPIRY DATE</label>
+                                    <div class="col-xs-6 col-lg-6 pl-ziro">
+                                        <input type="text" class="form-control" id="expityMonth" placeholder="MM" required />
+                                    </div>
+                                    <div class="col-xs-6 col-lg-6 pl-ziro">
+                                        <input type="text" class="form-control" id="expityYear" placeholder="YY" required /></div>
+                                </div>
+                            </div>
+                            <div class="col-xs-5 col-md-5 pull-right">
+                                <div class="form-group">
+                                    <label for="cvCode">
+                                        CVV </label>
+                                    <input type="password" class="form-control" id="cvCode" placeholder="CV" required />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <font size="4px">
+                    <ul class="nav nav-pills nav-stacked">
+                        <li class="active"><a href="#"><span class="badge pull-right" name="price"><span class="glyphicon "></span>   <input type="text" style="text-align: center; border:none;"   id="price" name="price" value={{price}} readonly />INR</span> Final Payment</a>
+                        </li>
+                    </ul>
+                </font>
+                <br/>
+            </div>
+
+
+
+            <!-- second div tag ##########################################-->
+            <div class="col-sm-8">
+                
+                    <div class="container second_div" >
+                        <center><h3>Your Details</h3></center>
+                        <center>
+                            <div class="row">
+                                <div class="col-sm-6" >  
+                                    <h5 class="card-title">Sender's Name </h5>
+                                    <input type="text" style="text-align: center; border:none;"   id="sendername" name="sendername" value={{sendername}} readonly />
+
+                                </div>
+
+                                <div class="col-sm-6">
+                                    <h5 class="card-title">Contact No. </h5>
+                                    <input type="text" style="text-align: center; border:none;"   id="contact" name="contact" value={{contact}} readonly />
+                                </div>
+                            </div>
+                        </center>
+                        <br>
+                        <center>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <h5 class="card-title">Receiver Address</h5>
+                                    <input type="text" style="text-align: center; border:none;"   id="raddress" name="raddress" value={{raddress}} readonly />
+                                </div>
+
+                                <div class="col-sm-6">
+                                    <h5 class="card-title">Cargo Weight(in kg)</h5>
+                                    <input type="text" style="text-align: center; border:none;"   id="cw" name="cw" value={{cw}} readonly />
+                                </div>
+                            </div>
+                        </center>
+                        <br>
+                        <center>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <h5 class="card-title">Shipping Date</h5>
+                                    <input type="text" style="text-align: center; border:none;"   id="shippingdate" name="shippingdate" value={{shippingdate}} readonly />
+                                </div>
+
+                                <div class="col-sm-6">
+                                    <h5 class="card-title">Additional Info</h5>
+                                    <input type="text" style="text-align: center; border:none;"   id="additional" name="additional" value={{additional}} readonly />
+                                </div>
+                            </div>
+                        </center>
+                        
+                        <center>
+                            <hr style="height:2px;border-width:1px;color:black;background-color:black">
+                            <div class="row"> 
+                                <div class="col-sm-12">
+                                    <h4>Your Cargo ID is :</h4><input type="text" style="text-align: center; border:none;"   id="cargoid" name="cargoid" value={{cargoid}} readonly />
+                                </div>
+
+                            </div>
+                        </center>
+            </div>
+
+        </div>
+    </div>
+    </div>
+    <br><br>
+    <center><button type="submit" class="btn btn-success btn-lg btn-block" value="Book" style="width:350px;">Book Cargo</button></center>
+
+</form>
+
+
+    {{>footer}}
+
+</body>
+</html>
