@@ -444,6 +444,7 @@ app.post('/BookTicket', function(req, res) {
 
 app.get("/PaymentCargo",function(req,res) {
     res.render('PaymentCargo')
+   
 }) ;
 
 app.post('/SaveCargoDetails', function(req, res) {
@@ -475,8 +476,8 @@ app.post('/SaveCargoDetails', function(req, res) {
                 cardnum : cardnum,
                 tnum :tnum
             })
+            alert("your payment is successful");
             const result = await clist.save();
-           
         }   
         catch(err){
             console.log(err);
