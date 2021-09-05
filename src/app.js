@@ -5,6 +5,7 @@ const app = express() ;
 const port = process.env.PORT || 8000 ;
 let alert=require('alert')
 
+var localStorage = require("localStorage")
 
 const bodyParser = require('body-parser');
 const {Registerlist , Trainlist, Cargolist}= require("./connection");
@@ -28,9 +29,8 @@ hbs.registerPartials(partials_Path) ;
 
 app.use(express.static(staticPath)) ;
 
-
-var storeuname = "";
-var storetnum = 0;
+//var storeuname = "";
+//var storetnum = 0;
 
 
 //routing
@@ -52,7 +52,8 @@ app.get("/UserLogin",(req,res)=> {
     res.render('UserLogin')
 }) ;
 app.get("/userlogout",(req,res)=> {
-    storeuname="";
+    //storeuname="";
+    localStorage.setItem("storeuname","") ;
     res.render('UserLogin')
 }) ;
 app.get("/UserSignUp",(req,res)=> {
@@ -66,6 +67,15 @@ app.get("/services",(req,res)=> {
 }) ;
 app.get("/AdminThings",(req,res)=> {
     res.render('AdminThings')
+}) ;
+
+app.post("/contactInfo",(req,res)=> {
+    let name = req.body.name ;
+    let email = req.bodt.email ;
+    let message = req.body.message ;
+
+    alert("Hello "+name+" ,Your Query is submitted....")
+    res.render('Contact')
 }) ;
 
 
@@ -133,7 +143,7 @@ app.get("/UserTrainInfo",(req,res)=> {
 app.post('/adminValidate', function(req, res) {
     var username = req.body.adminUsername
     var password = req.body.adminPassword
-    console.log(username+" "+password);
+    //console.log(username+" "+password);
     if (username=="irctc" && password == "2021") {
         res.render('AdminThings')
     } else { 
@@ -147,7 +157,7 @@ app.post('/adminValidate', function(req, res) {
 
 app.post('/DeleteInfo', function(req, res) {
     var tnum=req.body.delete;
-    console.log(tnum)
+    //console.log(tnum)
     const deldocument = async ()=>{
         try{
             
@@ -182,7 +192,7 @@ app.post('/DeleteInfo', function(req, res) {
 
 app.post('/UpdateInfo', function(req, res) {
     var tnum=req.body.update;
-    console.log(tnum)
+    //console.log(tnum)
     const getdocument = async ()=>{
         try{
             const result = await Trainlist.find({tnum:tnum })
@@ -230,7 +240,8 @@ app.post('/UserLoginValidate', function(req, res) {
             
             if(result.length!=0)
             {
-             storeuname=username;
+             //storeuname=username;
+             localStorage.setItem("storeuname",username) ;
                     const docu = async ()=>{
                         try{
                             const result = await Trainlist.find()
@@ -434,7 +445,8 @@ app.post('/UpdateValues', function(req, res) {
 
 app.post('/BookTicket', function(req, res) {
     var tnum=req.body.cargo;
-    storetnum=tnum;
+    //storetnum=tnum;
+    localStorage.setItem("storetnum",tnum) ;
     
     res.render("BookTrainTicket");
     
@@ -444,7 +456,6 @@ app.post('/BookTicket', function(req, res) {
 
 app.get("/PaymentCargo",function(req,res) {
     res.render('PaymentCargo')
-   
 }) ;
 
 app.post('/SaveCargoDetails', function(req, res) {
@@ -454,12 +465,14 @@ app.post('/SaveCargoDetails', function(req, res) {
     var shippingdate = req.body.shippingdate
     var cw = req.body.cw
     var additional = req.body.additional
-    var uname = storeuname;
+    //var uname = storeuname;
+    var uname = localStorage.getItem("storeuname");
     var cargoid = req.body.cargoid
     var totalfare = req.body.price
     var cardnum = req.body.cardnum
 
-    var tnum = storetnum
+    //var tnum = storetnum
+    var tnum = localStorage.getItem("storetnum") ;
 
     const createDocument=async ()=>{
         try{
@@ -476,8 +489,8 @@ app.post('/SaveCargoDetails', function(req, res) {
                 cardnum : cardnum,
                 tnum :tnum
             })
-            alert("your payment is successful");
             const result = await clist.save();
+           
         }   
         catch(err){
             console.log(err);
@@ -489,11 +502,11 @@ app.post('/SaveCargoDetails', function(req, res) {
 
 
     var x;
-    console.log(tnum);
+    //console.log(tnum);
     const getdocument = async ()=>{
         try{
             const result = await Trainlist.find({tnum:tnum})
-            console.log(result);
+            //console.log(result);
            x=result[0].availSpace;
            x=x-parseInt(cw);
            //   console.log(x);
@@ -537,18 +550,22 @@ app.post('/AddCargo', function(req, res) {
     var cw = req.body.cw
     var additional = req.body.additional
     // var uname = storeuname;
-    var tnum = storetnum
+    //var tnum = storetnum
+    var tnum = localStorage.getItem("storetnum") ;
 
     cargoid = parseInt(Math.random().toString().slice(2,12));
     
 
     const getdocument = async ()=>{
         try{
-            const result = await Trainlist.find()
-
+            const result = await Trainlist.findOne({tnum:tnum})
+            //console.log(tnum) ;
+            //console.log(result)
             var x = parseInt(cw)
 
-            price = x*(result[0].rateperkg)
+            price = x*(result.rateperkg)
+           
+            
            
             res.render("PaymentCargo",{
                 sendername : sendername,
@@ -582,6 +599,7 @@ app.get("/BookingHistory",(req,res)=> {
 
     const getdocument = async ()=>{
         try{
+            var storeuname = localStorage.getItem("storeuname") ;
             const result = await Cargolist.find({username: storeuname})
            
             res.render('HistoryDetails',{bookingData:result})
@@ -626,4 +644,3 @@ app.get("*",(req,res)=> {
 app.listen(port,() => {
     console.log(`listening to the port at ${port} `)
 })
-
